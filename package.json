@@ -1,0 +1,11 @@
+{
+  "name": "aquaconnect-mvp-repo-root",
+  "private": true,
+  "description": "This is a Flutter app repo (see pubspec.yaml) — the deployable Node/Express API lives in server/. This package.json exists only so Railway's Railpack builder detects a Node app at the repo root when the service's Root Directory isn't set to server/. If you set Root Directory to \"server\" in the Railway service settings instead, this file isn't needed for that service.",
+  "scripts": {
+    "postinstall": "npm install --prefix server",
+    "start": "npm start --prefix server",
+    "migrate": "npm run migrate --prefix server",
+    "seed": "npm run seed --prefix server"
+  }
+}
