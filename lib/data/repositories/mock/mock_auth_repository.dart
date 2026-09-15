@@ -1,0 +1,46 @@
+import 'dart:async';
+
+import '../../mock/mock_seed.dart';
+import '../auth_repository.dart';
+
+/// In-memory auth for local/demo runs. Any non-empty email/password pair
+/// signs in as the seeded 해강수산질병관리원 · 이동길 member.
+class MockAuthRepository implements AuthRepository {
+  final _controller = StreamController<AuthSession?>.broadcast();
+  AuthSession? _session;
+
+  @override
+  AuthSession? get currentSession => _session;
+
+  @override
+  Stream<AuthSession?> authStateChanges() {
+    // Stream.multi runs its callback once per listener, so every new
+    // subscriber (e.g. a screen mounted after sign-in already happened)
+    // immediately gets the current session instead of only future changes
+    // — matching how Supabase's own onAuthStateChange replays state.
+    return Stream.multi((controller) {
+      controller.add(_session);
+      final sub = _controller.stream.listen(controller.add, onDone: controller.close);
+      controller.onCancel = sub.cancel;
+    });
+  }
+
+  @override
+  Future<void> signIn({required String email, required String password}) async {
+    if (email.trim().isEmpty || password.trim().isEmpty) {
+      throw Exception('이메일과 비밀번호를 입력해주세요.');
+    }
+    await Future<void>.delayed(const Duration(milliseconds: 300));
+    _session = const AuthSession(
+      member: MockSeed.currentMember,
+      organization: MockSeed.organization,
+    );
+    _controller.add(_session);
+  }
+
+  @override
+  Future<void> signOut() async {
+    _session = null;
+    _controller.add(null);
+  }
+}

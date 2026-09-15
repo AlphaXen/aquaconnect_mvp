@@ -1,0 +1,138 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #185FA5; text-decoration: none; }
+    a:hover { color: #123F70; }
+  </style>
+</helmet>
+
+<div style="width:390px;height:844px;display:flex;flex-direction:column;background:#F3F6FA;font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;color:#182233;overflow:hidden;">
+
+  <!-- 모바일 브라우저 주소창 (앱이 아니라 웹임을 표시) -->
+  <div style="flex:0 0 auto;background:#E7ECF2;padding:8px 14px;display:flex;align-items:center;gap:6px;">
+    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#7186A0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+    <div style="font-size:11px;color:#5B6B80;font-weight:600;">aquaconnect.app/r/8f2ka9</div>
+  </div>
+
+  <!-- Header -->
+  <div style="flex:0 0 auto;padding:16px 20px 14px;background:#FFFFFF;border-bottom:1px solid #E7ECF2;display:flex;align-items:center;justify-content:space-between;">
+    <div style="font-size:14px;font-weight:900;color:#123F70;">AquaConnect</div>
+    <div style="font-size:10.5px;font-weight:700;color:#7186A0;background:#F3F6FA;padding:4px 9px;border-radius:20px;">공유된 리포트</div>
+  </div>
+
+  <!-- Scrollable content -->
+  <div style="flex:1 1 auto;overflow-y:auto;padding:16px 20px 20px;display:flex;flex-direction:column;gap:14px;">
+
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div style="font-size:16px;font-weight:800;color:#182233;">신일수산 1양식장</div>
+      <div style="font-size:11.5px;color:#8592A3;">완도군 노화읍 · 해강수산질병관리원 제공 · 이번 주 리포트</div>
+    </div>
+
+    <!-- 종합 위험도 요약 -->
+    <div style="background:#FFFFFF;border:1px solid #F0DCCF;border-radius:16px;padding:16px;display:flex;flex-direction:column;gap:12px;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <div style="font-size:12px;font-weight:800;color:#FFFFFF;background:#EF9F27;padding:5px 12px;border-radius:20px;">주의</div>
+        <div style="font-size:14px;font-weight:800;color:#182233;">고수온 지속 + 폐사 소폭 증가</div>
+      </div>
+      <div style="font-size:12.5px;color:#64748B;line-height:1.5;">지난 7일 대비 폐사 3마리 증가, 평균 수온 +0.6℃ — 담당 관리사에게 방문을 요청해보세요.</div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;">
+        <div style="background:#F7F9FB;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:15px;font-weight:800;color:#182233;">18마리</div>
+          <div style="font-size:10.5px;color:#8592A3;margin-top:2px;">주간 폐사</div>
+        </div>
+        <div style="background:#F7F9FB;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:15px;font-weight:800;color:#182233;">29.1℃</div>
+          <div style="font-size:10.5px;color:#8592A3;margin-top:2px;">평균 수온</div>
+        </div>
+        <div style="background:#F7F9FB;border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:15px;font-weight:800;color:#182233;">D-9</div>
+          <div style="font-size:10.5px;color:#8592A3;margin-top:2px;">최근 방문</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 해양환경 데이터 -->
+    <div style="background:#FFFFFF;border:1px solid #E7ECF2;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;">
+        <div style="font-size:13.5px;font-weight:800;color:#182233;">해양환경 데이터</div>
+        <div style="font-size:10px;font-weight:700;color:#185FA5;background:#E8F1FA;padding:3px 8px;border-radius:20px;">완도 관측소</div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:#8592A3;margin-bottom:4px;">일별 수온 (℃) · 최근 7일</div>
+        <svg width="100%" height="48" viewBox="0 0 326 48" preserveAspectRatio="none">
+          <polyline points="0,28 54,25 108,22 163,17 217,12 271,9 326,7" fill="none" stroke="#D85A30" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <line x1="0" y1="40" x2="326" y2="40" stroke="#EDF1F5" stroke-width="1"/>
+        </svg>
+      </div>
+      <div style="font-size:9.5px;color:#8FA0B5;">출처 · 바다누리 해양정보 · NIFS (이 양식장 최근접 관측소 기준)</div>
+    </div>
+
+    <!-- AI 정리 소견 -->
+    <div style="background:#EAF2FA;border:1px solid #CEE0F0;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:12.5px;font-weight:800;color:#123F70;">AI 정리 소견</div>
+      <div style="font-size:12px;color:#26415E;line-height:1.5;">고수온이 이어지는 가운데 폐사가 소폭 늘었습니다. 아직 위험 단계는 아니지만 추이를 지켜볼 필요가 있습니다.</div>
+      <div style="font-size:10px;color:#5B7897;font-style:italic;line-height:1.5;border-top:1px solid #CEE0F0;padding-top:8px;">AI는 기록·이미지·환경 변화의 이상징후를 정리해 보여줍니다. 최종 진단과 처방은 수산질병관리원이 수행합니다.</div>
+    </div>
+
+    <!-- 후속 조치 (초안) -->
+    <div style="background:#FFFFFF;border:1px solid #E7ECF2;border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:8px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#178A66" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        <div style="font-size:13.5px;font-weight:800;color:#182233;">지금 확인해보세요 (후속 조치)</div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;align-items:flex-start;gap:8px;">
+          <div style="flex:0 0 auto;width:18px;height:18px;border-radius:5px;background:#EFF6F2;display:flex;align-items:center;justify-content:center;margin-top:1px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#178A66" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div style="font-size:12.5px;color:#3A4A5E;line-height:1.5;">폐사한 개체와 수조 상태를 사진으로 남겨두면 다음 방문·상담에 도움이 됩니다</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:8px;">
+          <div style="flex:0 0 auto;width:18px;height:18px;border-radius:5px;background:#EFF6F2;display:flex;align-items:center;justify-content:center;margin-top:1px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#178A66" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div style="font-size:12.5px;color:#3A4A5E;line-height:1.5;">사료 섭이량과 유영 상태에 평소와 다른 점이 있는지 확인해보세요</div>
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:8px;">
+          <div style="flex:0 0 auto;width:18px;height:18px;border-radius:5px;background:#EFF6F2;display:flex;align-items:center;justify-content:center;margin-top:1px;">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#178A66" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+          </div>
+          <div style="font-size:12.5px;color:#3A4A5E;line-height:1.5;">증상이 계속되거나 심해지면 아래 버튼으로 담당 관리사에게 바로 알려주세요</div>
+        </div>
+      </div>
+
+      <a href="#" style="display:flex;align-items:center;justify-content:center;gap:6px;background:#E4F4EF;color:#178A66;font-size:13px;font-weight:800;padding:11px;border-radius:10px;margin-top:2px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#178A66" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        담당 관리사 이동길에게 연락하기
+      </a>
+      <div style="font-size:9.5px;color:#8FA0B5;line-height:1.4;">위 내용은 AI가 정리한 일반적인 참고 사항이며 진단·처방이 아닙니다. 정확한 확인은 담당 수산질병관리사와 상담하세요.</div>
+    </div>
+
+  </div>
+
+  <!-- 하단 고정 영역: 만료 안내 + 설치 유도 -->
+  <div style="flex:0 0 auto;background:#FFFFFF;border-top:1px solid #E7ECF2;padding:12px 20px 16px;display:flex;flex-direction:column;gap:10px;">
+    <div style="display:flex;align-items:center;gap:6px;">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8FA0B5" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>
+      <div style="font-size:10px;color:#8FA0B5;">앱 설치 없이 보는 화면이며, 이 링크는 2026-10-12까지 열람할 수 있습니다.</div>
+    </div>
+    <a href="#" style="display:flex;align-items:center;justify-content:center;gap:6px;background:#185FA5;color:#FFFFFF;font-size:13.5px;font-weight:800;padding:12px;border-radius:10px;">AquaConnect 앱 설치하고 계속 보기</a>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

@@ -1,0 +1,163 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+import '../../core/providers/data_providers.dart';
+import '../../core/providers/repository_providers.dart';
+import '../../core/theme/app_colors.dart';
+
+class MyPageScreen extends ConsumerWidget {
+  const MyPageScreen({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final session = ref.watch(authStateProvider).valueOrNull;
+    final farmsAsync = ref.watch(farmsProvider);
+
+    return Scaffold(
+      backgroundColor: AppColors.background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.fromLTRB(20, 18, 20, 14),
+              decoration: const BoxDecoration(color: AppColors.surface, border: Border(bottom: BorderSide(color: AppColors.border))),
+              child: const Text('마이페이지', style: TextStyle(fontSize: 17, fontWeight: FontWeight.w900, color: AppColors.brandDark)),
+            ),
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.fromLTRB(20, 16, 20, 24),
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(16),
+                    decoration: BoxDecoration(color: AppColors.surface, border: Border.all(color: AppColors.border), borderRadius: BorderRadius.circular(14)),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 52,
+                          height: 52,
+                          decoration: const BoxDecoration(color: AppColors.brandTint, shape: BoxShape.circle),
+                          child: const Icon(Icons.person_outline, size: 26, color: AppColors.brand),
+                        ),
+                        const SizedBox(width: 14),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(session?.member.name ?? '-',
+                                      style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
+                                  const SizedBox(width: 6),
+                                  if (session?.member.isOwner == true)
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                                      decoration: BoxDecoration(color: AppColors.brand, borderRadius: BorderRadius.circular(20)),
+                                      child: const Text('소유자', style: TextStyle(fontSize: 10.5, fontWeight: FontWeight.w800, color: Colors.white)),
+                                    ),
+                                ],
+                              ),
+                              const SizedBox(height: 2),
+                              Text(session?.organization.name ?? '-',
+                                  style: const TextStyle(fontSize: 12, color: AppColors.textTertiary)),
+                            ],
+                          ),
+                        ),
+                        const Icon(Icons.chevron_right, size: 14, color: AppColors.neutralArrow),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  _SectionLabel('관리원 관리'),
+                  const SizedBox(height: 8),
+                  _MenuGroup(items: [
+                    _MenuItem(icon: Icons.groups_outlined, label: '구성원 관리', trailing: '4명'),
+                    _MenuItem(
+                      icon: Icons.home_work_outlined,
+                      label: '등록 양식장 관리',
+                      trailing: farmsAsync.maybeWhen(data: (f) => '${f.length}곳', orElse: () => ''),
+                    ),
+                    const _MenuItem(icon: Icons.history, label: '변경 이력'),
+                    const _MenuItem(icon: Icons.link, label: '공유 링크 관리', trailing: '발급 2건'),
+                  ]),
+                  const SizedBox(height: 16),
+                  _SectionLabel('개인 설정'),
+                  const SizedBox(height: 8),
+                  _MenuGroup(items: const [
+                    _MenuItem(icon: Icons.summarize_outlined, label: '하루 요약 설정', trailing: '오후 4:00'),
+                    _MenuItem(icon: Icons.notifications_none, label: '알림 설정'),
+                    _MenuItem(icon: Icons.file_download_outlined, label: '데이터 내보내기'),
+                  ]),
+                  const SizedBox(height: 12),
+                  Center(
+                    child: TextButton(
+                      onPressed: () => ref.read(authRepositoryProvider).signOut(),
+                      child: const Text('로그아웃', style: TextStyle(fontSize: 12.5, fontWeight: FontWeight.w600, color: AppColors.textMuted)),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _SectionLabel extends StatelessWidget {
+  const _SectionLabel(this.text);
+  final String text;
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Text(text, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700, color: AppColors.textMuted)),
+    );
+  }
+}
+
+class _MenuItem {
+  const _MenuItem({required this.icon, required this.label, this.trailing});
+  final IconData icon;
+  final String label;
+  final String? trailing;
+}
+
+class _MenuGroup extends StatelessWidget {
+  const _MenuGroup({required this.items});
+  final List<_MenuItem> items;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(color: AppColors.surface, border: Border.all(color: AppColors.border), borderRadius: BorderRadius.circular(14)),
+      child: Column(
+        children: [
+          for (var i = 0; i < items.length; i++)
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 13),
+              decoration: BoxDecoration(
+                border: i == items.length - 1 ? null : const Border(bottom: BorderSide(color: AppColors.divider)),
+              ),
+              child: Row(
+                children: [
+                  Icon(items[i].icon, size: 18, color: AppColors.textSecondary),
+                  const SizedBox(width: 12),
+                  Expanded(
+                    child: Text(items[i].label, style: const TextStyle(fontSize: 13.5, fontWeight: FontWeight.w600, color: AppColors.textPrimary)),
+                  ),
+                  if (items[i].trailing != null) ...[
+                    Text(items[i].trailing!, style: const TextStyle(fontSize: 11, color: AppColors.textMuted)),
+                    const SizedBox(width: 6),
+                  ],
+                  const Icon(Icons.chevron_right, size: 13, color: AppColors.neutralArrow),
+                ],
+              ),
+            ),
+        ],
+      ),
+    );
+  }
+}

@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #185FA5; text-decoration: none; }
+    a:hover { color: #123F70; }
+  </style>
+</helmet>
+
+<div style="width:390px;height:844px;display:flex;flex-direction:column;background:#F3F6FA;font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;color:#182233;overflow:hidden;">
+
+  <!-- Header -->
+  <div style="flex:0 0 auto;padding:18px 20px 14px;background:#FFFFFF;border-bottom:1px solid #E7ECF2;">
+    <div style="font-size:17px;font-weight:900;color:#123F70;">마이페이지</div>
+  </div>
+
+  <!-- Scrollable content -->
+  <div style="flex:1 1 auto;overflow-y:auto;padding:16px 20px 24px;display:flex;flex-direction:column;gap:16px;">
+
+    <!-- 계정 카드 -->
+    <div style="background:#FFFFFF;border:1px solid #E7ECF2;border-radius:14px;padding:16px;display:flex;align-items:center;gap:14px;">
+      <div style="width:52px;height:52px;border-radius:26px;background:#E8F1FA;display:flex;align-items:center;justify-content:center;flex:0 0 auto;">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      </div>
+      <div style="flex:1 1 auto;min-width:0;">
+        <div style="display:flex;align-items:center;gap:6px;">
+          <div style="font-size:15px;font-weight:800;color:#182233;">이동길</div>
+          <div style="font-size:10.5px;font-weight:800;color:#FFFFFF;background:#185FA5;padding:2px 8px;border-radius:20px;">소유자</div>
+        </div>
+        <div style="font-size:12px;color:#8592A3;margin-top:2px;">해강수산질병관리원</div>
+      </div>
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#B3BCC7" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+    </div>
+
+    <!-- 관리원 관리 -->
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:12px;font-weight:700;color:#95A2B3;padding:0 4px;">관리원 관리</div>
+      <div style="background:#FFFFFF;border:1px solid #E7ECF2;border-radius:14px;overflow:hidden;">
+
+        <a href="#" style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #F0F3F7;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"/><circle cx="10" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          <div style="flex:1 1 auto;font-size:13.5px;font-weight:600;color:#182233;">구성원 관리</div>
+          <div style="font-size:11px;color:#95A2B3;">4명</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+        <a href="#" style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #F0F3F7;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V10l8-6 8 6v11"/><path d="M9 21v-6h6v6"/></svg>
+          <div style="flex:1 1 auto;font-size:13.5px;font-weight:600;color:#182233;">등록 양식장 관리</div>
+          <div style="font-size:11px;color:#95A2B3;">18곳</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+        <a href="#" style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #F0F3F7;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 2.6-6.3"/><path d="M3 5v6h6"/><path d="M12 7v5l3 3"/></svg>
+          <div style="flex:1 1 auto;font-size:13.5px;font-weight:600;color:#182233;">변경 이력</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+        <a href="#" style="display:flex;align-items:center;gap:12px;padding:13px 16px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+          <div style="flex:1 1 auto;font-size:13.5px;font-weight:600;color:#182233;">공유 링크 관리</div>
+          <div style="font-size:11px;color:#95A2B3;">발급 2건</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+      </div>
+    </div>
+
+    <!-- 개인 설정 -->
+    <div style="display:flex;flex-direction:column;gap:8px;">
+      <div style="font-size:12px;font-weight:700;color:#95A2B3;padding:0 4px;">개인 설정</div>
+      <div style="background:#FFFFFF;border:1px solid #E7ECF2;border-radius:14px;overflow:hidden;">
+
+        <a href="#" style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #F0F3F7;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1"/><path d="M9 12l2 2 4-4"/></svg>
+          <div style="flex:1 1 auto;font-size:13.5px;font-weight:600;color:#182233;">하루 요약 설정</div>
+          <div style="font-size:11px;color:#95A2B3;">오후 4:00</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+        <a href="#" style="display:flex;align-items:center;gap:12px;padding:13px 16px;border-bottom:1px solid #F0F3F7;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+          <div style="flex:1 1 auto;font-size:13.5px;font-weight:600;color:#182233;">알림 설정</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+        <a href="#" style="display:flex;align-items:center;gap:12px;padding:13px 16px;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4A5D75" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>
+          <div style="flex:1 1 auto;font-size:13.5px;font-weight:600;color:#182233;">데이터 내보내기</div>
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#C3CAD3" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
+        </a>
+
+      </div>
+    </div>
+
+    <a href="#" style="align-self:center;font-size:12.5px;font-weight:600;color:#95A2B3;padding:8px 0;">로그아웃</a>
+
+  </div>
+
+  <!-- Bottom tab bar -->
+  <div style="flex:0 0 auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#FFFFFF;border-top:1px solid #E7ECF2;padding:9px 0 12px;">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#95A2B3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/></svg>
+      <div style="font-size:10.5px;color:#95A2B3;">홈</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#95A2B3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
+      <div style="font-size:10.5px;color:#95A2B3;">메모</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#95A2B3" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg>
+      <div style="font-size:10.5px;color:#95A2B3;">정보</div>
+    </div>
+    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+      <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="#185FA5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg>
+      <div style="font-size:10.5px;font-weight:700;color:#185FA5;">마이페이지</div>
+    </div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

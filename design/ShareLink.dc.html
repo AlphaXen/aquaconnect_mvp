@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./vendor/react.js"></script>
+<script src="./vendor/react-dom.js"></script>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    a { color: #185FA5; text-decoration: none; }
+    a:hover { color: #123F70; }
+  </style>
+</helmet>
+
+<div style="width:390px;height:844px;display:flex;flex-direction:column;background:#F3F6FA;font-family:'Noto Sans KR',-apple-system,'Malgun Gothic',sans-serif;color:#182233;overflow:hidden;position:relative;">
+
+  <!-- 배경 — 양식장별 통합 리포트 화면 위에 뜬 바텀시트. 뒤 화면이 어둡게 깔린 것을 표현하는 단일 스크림 -->
+  <div style="flex:1 1 auto;background:rgba(12,22,38,0.55);"></div>
+
+  <!-- 바텀시트: 리포트 링크 공유 -->
+  <div style="position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:20px 20px 0 0;box-shadow:0 -8px 24px rgba(15,30,50,0.18);padding:10px 20px 22px;display:flex;flex-direction:column;gap:16px;">
+    <div style="width:36px;height:4px;border-radius:2px;background:#DCE3EC;align-self:center;"></div>
+
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div style="font-size:15.5px;font-weight:800;color:#182233;">리포트 링크 공유</div>
+      <div style="font-size:12px;color:#8592A3;">신일수산 1양식장 · 어가가 설치 없이 웹으로 열람</div>
+    </div>
+
+    <!-- 생성된 링크 -->
+    <div style="display:flex;align-items:center;gap:8px;background:#F3F6FA;border:1px solid #E7ECF2;border-radius:10px;padding:10px 12px;">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#7186A0" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg>
+      <div style="flex:1 1 auto;font-size:12.5px;color:#182233;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">aquaconnect.app/r/8f2ka9</div>
+      <div style="flex:0 0 auto;font-size:11.5px;font-weight:700;color:#185FA5;padding:4px 8px;">복사</div>
+    </div>
+
+    <!-- 만료 기한 선택 -->
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="font-size:11.5px;font-weight:700;color:#4A5D75;">만료 기한</div>
+      <div style="display:flex;gap:6px;">
+        <div style="font-size:12px;font-weight:600;color:#8592A3;background:#F3F6FA;border:1px solid #E7ECF2;border-radius:20px;padding:6px 14px;">7일</div>
+        <div style="font-size:12px;font-weight:700;color:#185FA5;background:#E8F1FA;border:1px solid #185FA5;border-radius:20px;padding:6px 14px;">30일</div>
+        <div style="font-size:12px;font-weight:600;color:#8592A3;background:#F3F6FA;border:1px solid #E7ECF2;border-radius:20px;padding:6px 14px;">무제한</div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:flex-start;gap:6px;background:#FCF1DD;border-radius:10px;padding:8px 10px;">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#B8770F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-top:1px;flex:0 0 auto;"><circle cx="12" cy="12" r="10"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+      <div style="font-size:10.5px;color:#8A6420;line-height:1.5;">어가의 영업 정보를 담고 있는 링크입니다. 열람 시 기록이 남고, 발급 이력은 마이페이지 &gt; 공유 링크 관리에서 확인·회수할 수 있습니다.</div>
+    </div>
+
+    <a href="#" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#FEE500;color:#3C1E1E;font-size:14px;font-weight:800;padding:13px;border-radius:10px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.76 1.86 5.18 4.66 6.58-.2.75-.73 2.73-.84 3.16-.14.53.2.53.42.38.17-.12 2.7-1.83 3.8-2.58.63.09 1.28.14 1.96.14 5.52 0 10-3.48 10-7.68S17.52 3 12 3Z"/></svg>
+      카카오톡으로 보내기
+    </a>
+    <a href="#" style="text-align:center;font-size:13px;font-weight:700;color:#185FA5;padding:4px;">다른 방법으로 공유 (링크 복사·문자 등)</a>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

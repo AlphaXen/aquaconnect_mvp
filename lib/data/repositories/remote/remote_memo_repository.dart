@@ -1,0 +1,77 @@
+import 'dart:async';
+
+import '../../models/memo.dart';
+import '../../services/api_client.dart';
+import '../memo_repository.dart';
+
+/// REST has no push channel, so this polls `GET /api/memos` on an interval
+/// and fans the result out to every listener. Good enough for an MVP where
+/// a handful of staff refresh a shared list — swap for SSE/websockets later
+/// if live co-editing becomes a real requirement.
+class RemoteMemoRepository implements MemoRepository {
+  RemoteMemoRepository({required ApiClient apiClient, this.pollInterval = const Duration(seconds: 15)})
+      : _api = apiClient;
+
+  final ApiClient _api;
+  final Duration pollInterval;
+
+  // Lets addMemo() nudge every active watcher to re-fetch immediately
+  // instead of waiting out the poll interval, without needing a shared
+  // in-memory cache layer.
+  final _refresh = StreamController<void>.broadcast();
+
+  Future<List<Memo>> _fetchAll() async {
+    final json = await _api.get('/api/memos') as List<dynamic>;
+    return json.map((e) => Memo.fromJson(e as Map<String, dynamic>)).toList();
+  }
+
+  @override
+  Stream<List<Memo>> watchMemos({String? farmId}) {
+    late final StreamController<List<Memo>> controller;
+    Timer? timer;
+    StreamSubscription<void>? refreshSub;
+
+    Future<void> tick() async {
+      try {
+        final memos = await _fetchAll();
+        if (!controller.isClosed) {
+          controller.add(farmId == null ? memos : memos.where((m) => m.farmId == farmId).toList());
+        }
+      } catch (e) {
+        if (!controller.isClosed) controller.addError(e);
+      }
+    }
+
+    controller = StreamController<List<Memo>>.broadcast(
+      onListen: () {
+        tick();
+        timer ??= Timer.periodic(pollInterval, (_) => tick());
+        refreshSub ??= _refresh.stream.listen((_) => tick());
+      },
+      onCancel: () {
+        timer?.cancel();
+        timer = null;
+        refreshSub?.cancel();
+        refreshSub = null;
+      },
+    );
+
+    return controller.stream;
+  }
+
+  @override
+  Future<Memo> addMemo({
+    String? farmId,
+    String? farmName,
+    required String content,
+    required List<String> tags,
+    int photoCount = 0,
+  }) async {
+    final json = await _api.post(
+      '/api/memos',
+      body: {'farmId': farmId, 'content': content, 'tags': tags, 'photoCount': photoCount},
+    ) as Map<String, dynamic>;
+    _refresh.add(null);
+    return Memo.fromJson(json);
+  }
+}
